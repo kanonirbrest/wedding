@@ -2,6 +2,15 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
+    <script>
+      /* GitHub Pages (project site): без завершающего / в URL пути вроде videos/… дают 404 */
+      (function () {
+        if (location.protocol === "file:") return;
+        var path = location.pathname.replace(/\/index\.html$/i, "");
+        if (path !== "/" && !path.endsWith("/")) path += "/";
+        document.write('<base href="' + path + '">');
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Свадьба Александра и Екатерины</title>
     <link rel="preload" href="images/hero-cover.png" as="image" />
