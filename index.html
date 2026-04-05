@@ -13,7 +13,7 @@
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Свадьба Александра и Екатерины</title>
-    <link rel="preload" href="images/hero-cover.png" as="image" />
+    <link rel="preload" href="images/hero-cover.jpg" as="image" />
     <link rel="preload" href="videos/lunagif.mp4" as="video" type="video/mp4" />
     <link rel="preload" href="css/style.css" as="style" />
     <link rel="preload" href="js/main.js" as="script" />
@@ -58,7 +58,17 @@
       </div>
     </div>
     <section class="site-hero anchor-section" id="hero" aria-label="Титульный экран">
-      <div class="site-hero__bg" aria-hidden="true"></div>
+      <div class="site-hero__bg" aria-hidden="true">
+        <img
+          class="site-hero__cover"
+          src="images/hero-cover.jpg"
+          alt=""
+          width="785"
+          height="1024"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </div>
       <div class="site-hero__scrim" aria-hidden="true"></div>
       <div class="site-hero__inner">
         <h1 class="site-hero__title">Александр и Екатерина</h1>
