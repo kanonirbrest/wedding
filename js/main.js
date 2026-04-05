@@ -284,22 +284,36 @@
   v.defaultMuted = true;
   v.playsInline = true;
 
-  function tryPlay() {
-    v.play().catch(function () {});
-  }
-  tryPlay();
-  /* На части мобильных браузеров автозапуск видео срабатывает только после жеста пользователя. */
-  document.addEventListener("touchstart", tryPlay, { passive: true, once: true });
-  document.addEventListener("pointerdown", tryPlay, { passive: true, once: true });
-  document.addEventListener("click", tryPlay, { passive: true, once: true });
-
   function showGifFallback() {
     if (!wrap || !img) return;
+    if (wrap.classList.contains("page-bg-video--use-gif")) return;
     var url = img.getAttribute("data-src");
     if (!url) return;
     img.setAttribute("src", url);
     wrap.classList.add("page-bg-video--use-gif");
   }
+
+  function tryPlay(afterUserGesture) {
+    var p = v.play();
+    if (!p || typeof p.catch !== "function") return;
+    p.catch(function () {
+      /* После жеста play() всё ещё падает — показываем GIF (iOS и др.). */
+      if (afterUserGesture) showGifFallback();
+    });
+  }
+
+  tryPlay(false);
+  /* На части мобильных браузеров автозапуск видео срабатывает только после жеста пользователя. */
+  document.addEventListener("touchstart", function () {
+    tryPlay(true);
+  }, { passive: true, once: true });
+  document.addEventListener("pointerdown", function () {
+    tryPlay(true);
+  }, { passive: true, once: true });
+  document.addEventListener("click", function () {
+    tryPlay(true);
+  }, { passive: true, once: true });
+
   v.addEventListener("error", showGifFallback);
 })();
 
