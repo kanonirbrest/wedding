@@ -14,6 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Свадьба Александра и Екатерины</title>
     <link rel="preload" href="images/hero-cover.png" as="image" />
+    <link rel="preload" href="videos/lunagif.mp4" as="video" type="video/mp4" />
+    <link rel="preload" href="css/style.css" as="style" />
+    <link rel="preload" href="js/main.js" as="script" />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,12 +35,14 @@
       <div class="page-bg-video__media">
         <video
           class="page-bg-video__video"
+          src="videos/lunagif.mp4"
           autoplay
           muted
           loop
           playsinline
           webkit-playsinline
           preload="auto"
+          fetchpriority="high"
         >
           <source src="videos/lunagif.mp4" type="video/mp4" />
         </video>
