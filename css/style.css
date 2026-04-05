@@ -143,12 +143,7 @@ body {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-color: #1a1a1a;
-  background-image: url("../images/hero-cover.png");
-  background-size: cover;
-  background-position: center 38%;
-  background-repeat: no-repeat;
-  transform-origin: center 38%;
+  transform-origin: center center;
   backface-visibility: hidden;
   will-change: transform;
 }
@@ -1294,7 +1289,7 @@ a:hover {
   max-width: 38rem;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
+  text-align: left;
 }
 
 #plan-dnya .day-plan__title {
@@ -1330,7 +1325,7 @@ a:hover {
 
   .day-plan__time {
     text-align: center;
-    font-size: clamp(4.1rem, 12.2vw, 5.15rem);
+    font-size: clamp(4.72rem, 14.03vw, 5.92rem);
   }
 
   #plan-dnya .day-plan__item {
@@ -1339,14 +1334,15 @@ a:hover {
   }
 
   #plan-dnya .day-plan__time {
-    text-align: left;
-    font-size: clamp(5.05rem, 30vw, 9.55rem);
+    text-align: center;
+    font-size: clamp(5.81rem, 34.5vw, 10.98rem);
     line-height: 0.8;
   }
 
   #plan-dnya .day-plan__content {
     padding-top: clamp(3.05rem, 16vw, 4.55rem);
     padding-left: clamp(1.35rem, 6.25vw, 2.45rem);
+    padding-right: clamp(1.35rem, 6.25vw, 2.45rem);
   }
 }
 
