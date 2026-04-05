@@ -178,9 +178,9 @@ body {
   margin: 0;
   font-family: var(--font-site-logo);
   font-weight: 400;
-  font-size: clamp(4.23rem, 13.5vw, 6.57rem);
+  font-size: clamp(5.29rem, 16.88vw, 8.21rem);
   line-height: 1.12;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.035em;
   color: #ffffff;
   text-shadow: 0 0.1em 1.2em rgba(0, 0, 0, 0.45);
   text-rendering: optimizeLegibility;
@@ -885,7 +885,9 @@ a:hover {
 #priglashenie .section-heading::after,
 #mesto-provedeniya .section-heading::after,
 #dresscode .section-heading::after,
-#rsvp .section-heading::after {
+#rsvp .section-heading::after,
+#plan-dnya .section-heading::after,
+#podarki .section-heading::after {
   content: none;
 }
 
@@ -893,9 +895,24 @@ a:hover {
   margin-bottom: var(--space-md);
 }
 
+/* Локация, план дня, дресс-код, подарки, RSVP — как заголовок приглашения: Antarctic, крупнее, жирнее */
+#mesto-provedeniya .section-heading,
+#plan-dnya .section-heading,
+#dresscode .section-heading,
+#podarki .section-heading,
+#rsvp .section-heading {
+  font-family: var(--font-calligraphy);
+  font-weight: 700;
+  font-size: clamp(2.75rem, 5.6vw + 1.2rem, 4.25rem);
+  line-height: 1.22;
+  letter-spacing: -0.035em;
+  text-rendering: optimizeLegibility;
+}
+
 #mesto-provedeniya .section-heading,
 #dresscode .section-heading,
-#rsvp .section-heading {
+#rsvp .section-heading,
+#podarki .section-heading {
   margin-bottom: var(--space-md);
   padding-top: 0;
 }
@@ -907,9 +924,9 @@ a:hover {
 .invitation-heading {
   font-family: var(--font-calligraphy);
   font-weight: 400;
-  font-size: clamp(1.85rem, 3.8vw + 0.85rem, 2.85rem);
+  font-size: clamp(2.31rem, 4.75vw + 1.06rem, 3.56rem);
   line-height: 1.28;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.035em;
   text-align: left;
   text-rendering: optimizeLegibility;
 }
@@ -1044,14 +1061,8 @@ a:hover {
 }
 
 #plan-dnya .section-heading {
-  font-size: clamp(2.269rem, 5.225vw, 2.957rem);
   margin-bottom: var(--space-sm);
   text-align: left;
-}
-
-#plan-dnya .section-heading::after {
-  margin-left: 0;
-  margin-right: auto;
 }
 
 .dresscode-lead {
