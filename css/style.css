@@ -178,7 +178,7 @@ body {
   margin: 0;
   font-family: var(--font-site-logo);
   font-weight: 400;
-  font-size: clamp(5.29rem, 16.88vw, 8.21rem);
+  font-size: clamp(6.08rem, 19.41vw, 9.44rem);
   line-height: 1.12;
   letter-spacing: -0.035em;
   color: #ffffff;
@@ -640,7 +640,7 @@ a:hover {
   display: block;
   margin-top: 0.5rem;
   font-family: var(--font-display);
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-size: clamp(1.21rem, 2.3vw, 1.44rem);
   font-style: italic;
   font-weight: 400;
   color: var(--color-ink);
@@ -667,7 +667,7 @@ a:hover {
 .countdown__value {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(2.35rem, 6vw, 3.2rem);
+  font-size: clamp(2.7rem, 6.9vw, 3.68rem);
   font-weight: 500;
   line-height: 1;
   color: var(--color-ink);
@@ -688,7 +688,7 @@ a:hover {
 .countdown-bar__done {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.15rem, 2.8vw, 1.4rem);
+  font-size: clamp(1.32rem, 3.22vw, 1.61rem);
   font-style: italic;
   font-weight: 400;
   color: var(--color-ink);
@@ -854,7 +854,7 @@ a:hover {
   position: relative;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.65rem, 3.8vw, 2.15rem);
+  font-size: clamp(1.9rem, 4.37vw, 2.47rem);
   text-align: center;
   letter-spacing: 0.02em;
   margin: 0 0 var(--space-lg);
@@ -903,10 +903,11 @@ a:hover {
 #rsvp .section-heading {
   font-family: var(--font-calligraphy);
   font-weight: 700;
-  font-size: clamp(2.75rem, 5.6vw + 1.2rem, 4.25rem);
+  font-size: clamp(3.16rem, 6.44vw + 1.38rem, 4.89rem);
   line-height: 1.22;
   letter-spacing: -0.035em;
   text-rendering: optimizeLegibility;
+  text-align: center;
 }
 
 #mesto-provedeniya .section-heading,
@@ -924,10 +925,10 @@ a:hover {
 .invitation-heading {
   font-family: var(--font-calligraphy);
   font-weight: 400;
-  font-size: clamp(2.31rem, 4.75vw + 1.06rem, 3.56rem);
+  font-size: clamp(2.66rem, 5.46vw + 1.22rem, 4.09rem);
   line-height: 1.28;
   letter-spacing: -0.035em;
-  text-align: left;
+  text-align: center;
   text-rendering: optimizeLegibility;
 }
 
@@ -967,7 +968,7 @@ a:hover {
 }
 
 .wedding-calendar__title {
-  font-size: clamp(1rem, 1.85vw + 0.72rem, 1.24rem);
+  font-size: clamp(1.15rem, 2.13vw + 0.83rem, 1.43rem);
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1062,7 +1063,7 @@ a:hover {
 
 #plan-dnya .section-heading {
   margin-bottom: var(--space-sm);
-  text-align: left;
+  text-align: center;
 }
 
 .dresscode-lead {
@@ -1223,12 +1224,12 @@ a:hover {
 
 .day-plan__time {
   font-family: var(--font-display);
-  font-size: clamp(3.9rem, 7.55vw, 4.95rem);
+  font-size: clamp(4.49rem, 8.68vw, 5.69rem);
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--color-ink);
-  text-align: right;
-  padding-right: 0.4rem;
+  text-align: center;
+  padding-right: 0;
 }
 
 .day-plan__content {
@@ -1238,11 +1239,12 @@ a:hover {
 .day-plan__title {
   margin: 0 0 var(--space-xs);
   font-family: var(--font-display);
-  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-size: clamp(1.27rem, 2.53vw, 1.55rem);
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-ink);
+  text-align: center;
 }
 
 .day-plan__text {
@@ -1265,17 +1267,19 @@ a:hover {
 #plan-dnya .day-plan__time {
   position: absolute;
   left: 0;
+  right: 0;
   top: 0;
   z-index: 0;
   margin: 0;
   padding: 0;
+  width: 100%;
   font-family: var(--font-display);
-  font-size: clamp(6.4rem, 17vw, 11.7rem);
+  font-size: clamp(7.36rem, 19.55vw, 13.46rem);
   font-weight: 500;
   line-height: 0.78;
   letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.14);
-  text-align: left;
+  text-align: center;
   pointer-events: none;
   user-select: none;
   white-space: nowrap;
@@ -1286,11 +1290,15 @@ a:hover {
   z-index: 1;
   padding-top: clamp(3.75rem, 10vw, 6.05rem);
   padding-left: clamp(1.85rem, 4.5vw, 3.65rem);
+  padding-right: clamp(1.85rem, 4.5vw, 3.65rem);
   max-width: 38rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 #plan-dnya .day-plan__title {
-  font-size: clamp(1.513rem, 3.025vw, 1.857rem);
+  font-size: clamp(1.74rem, 3.48vw, 2.14rem);
   line-height: 1.22;
   text-shadow: 0 0.08em 0.65em rgba(0, 0, 0, 0.45);
 }
@@ -1456,7 +1464,7 @@ a:hover {
 .rsvp-subheading {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.25rem, 2.8vw, 1.5rem);
+  font-size: clamp(1.44rem, 3.22vw, 1.73rem);
   text-align: center;
   letter-spacing: 0.02em;
   margin: 0 0 var(--space-md);
