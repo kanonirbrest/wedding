@@ -275,9 +275,40 @@
 })();
 
 (function () {
-  var v = document.querySelector(".page-bg-video__media");
+  var v = document.querySelector(".page-bg-video__video");
   if (!v || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  v.play().catch(function () {});
+  function tryPlay() {
+    v.play().catch(function () {});
+  }
+  tryPlay();
+  /* На части мобильных браузеров автозапуск видео срабатывает только после жеста пользователя. */
+  document.addEventListener("touchstart", tryPlay, { passive: true, once: true });
+  document.addEventListener("click", tryPlay, { passive: true, once: true });
+})();
+
+(function () {
+  var img = document.querySelector(".page-bg-video__gif");
+  if (!img) return;
+  var url = img.getAttribute("data-src");
+  if (!url) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var mq = window.matchMedia("(max-width: 900px) and (hover: none) and (pointer: coarse)");
+
+  function syncGifSrc() {
+    if (mq.matches) {
+      if (img.getAttribute("src") !== url) img.setAttribute("src", url);
+    } else {
+      img.removeAttribute("src");
+    }
+  }
+
+  syncGifSrc();
+  if (mq.addEventListener) {
+    mq.addEventListener("change", syncGifSrc);
+  } else {
+    mq.addListener(syncGifSrc);
+  }
 })();
 
 (function () {
@@ -314,10 +345,20 @@
   var bgVideo = document.querySelector(".page-bg-video__media");
 
   var pending = false;
+  var inertiaRaf = null;
+  var inertiaFramesLeft = 0;
 
-  function tick() {
-    pending = false;
+  function scrollY() {
+    return (
+      window.scrollY ||
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0
+    );
+  }
 
+  function applyParallax() {
     if (reduceMotion) return;
 
     if (hero && heroBg) {
@@ -330,9 +371,14 @@
     }
 
     if (bgVideo) {
-      var vy = window.scrollY * 0.04;
+      var vy = scrollY() * 0.04;
       bgVideo.style.transform = "translate(-50%, calc(-50% + " + vy + "px))";
     }
+  }
+
+  function tick() {
+    pending = false;
+    applyParallax();
   }
 
   function onScrollOrResize() {
@@ -342,7 +388,31 @@
     }
   }
 
-  tick();
+  function inertiaStep() {
+    applyParallax();
+    inertiaFramesLeft--;
+    if (inertiaFramesLeft > 0) {
+      inertiaRaf = requestAnimationFrame(inertiaStep);
+    } else {
+      inertiaRaf = null;
+    }
+  }
+
+  function startInertiaSync() {
+    if (reduceMotion) return;
+    inertiaFramesLeft = 100;
+    if (!inertiaRaf) {
+      inertiaRaf = requestAnimationFrame(inertiaStep);
+    }
+  }
+
+  applyParallax();
   window.addEventListener("scroll", onScrollOrResize, { passive: true });
   window.addEventListener("resize", onScrollOrResize, { passive: true });
+
+  /* Мобильные браузеры (особенно iOS Safari) редко шлют scroll во время жеста и инерции — обновляем параллакс от касаний и пару секунд после отпускания пальца. */
+  window.addEventListener("touchstart", onScrollOrResize, { passive: true });
+  window.addEventListener("touchmove", onScrollOrResize, { passive: true });
+  window.addEventListener("touchend", startInertiaSync, { passive: true });
+  window.addEventListener("touchcancel", startInertiaSync, { passive: true });
 })();

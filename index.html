@@ -28,15 +28,27 @@
   </head>
   <body>
     <div class="page-bg-video" aria-hidden="true">
-      <video
-        class="page-bg-video__media"
-        autoplay
-        muted
-        loop
-        playsinline
-      >
-        <source src="videos/lunagif.mp4" type="video/mp4" />
-      </video>
+      <div class="page-bg-video__media">
+        <video
+          class="page-bg-video__video"
+          autoplay
+          muted
+          loop
+          playsinline
+          webkit-playsinline
+        >
+          <source src="videos/lunagif.mp4" type="video/mp4" />
+        </video>
+        <img
+          class="page-bg-video__gif"
+          data-src="images/lunagif.gif"
+          alt=""
+          width="240"
+          height="240"
+          decoding="async"
+          fetchpriority="low"
+        />
+      </div>
     </div>
     <section class="site-hero anchor-section" id="hero" aria-label="Титульный экран">
       <div class="site-hero__bg" aria-hidden="true"></div>
