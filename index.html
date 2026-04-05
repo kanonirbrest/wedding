@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Свадьба Александра и Екатерины</title>
+    <link rel="preload" href="images/hero-cover.png" as="image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Marck+Script&family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+    <div class="page-bg-video" aria-hidden="true">
+      <video
+        class="page-bg-video__media"
+        autoplay
+        muted
+        loop
+        playsinline
+      >
+        <source src="videos/lunagif.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <section class="site-hero anchor-section" id="hero" aria-label="Титульный экран">
+      <div class="site-hero__bg" aria-hidden="true"></div>
+      <div class="site-hero__scrim" aria-hidden="true"></div>
+      <div class="site-hero__inner">
+        <h1 class="site-hero__title">Александр и Екатерина</h1>
+        <p class="site-hero__meta">29 августа 2026 · Минск</p>
+        <a class="site-hero__cta" href="#priglashenie">Открыть приглашение</a>
+      </div>
+      <a class="site-hero__scroll" href="#priglashenie">
+        <span class="site-hero__scroll-text">Листайте вниз</span>
+        <span class="site-hero__scroll-icon" aria-hidden="true"></span>
+      </a>
+    </section>
+    <header class="site-header" id="site-header">
+      <div class="site-header__inner">
+        <button
+          type="button"
+          class="site-nav-toggle"
+          id="site-nav-toggle"
+          aria-expanded="false"
+          aria-controls="site-nav-panel"
+          aria-label="Открыть меню разделов"
+        >
+          <span class="site-nav-toggle__bar" aria-hidden="true"></span>
+          <span class="site-nav-toggle__bar" aria-hidden="true"></span>
+          <span class="site-nav-toggle__bar" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div id="site-nav-panel" class="site-nav-panel" inert>
+        <nav class="site-nav site-nav--panel" aria-label="Разделы сайта">
+          <a href="#hero">Главная</a>
+          <a href="#priglashenie">Приглашение</a>
+          <a href="#mesto-provedeniya">Локация</a>
+          <a href="#plan-dnya">План дня</a>
+          <a href="#dresscode">Дресс-код</a>
+          <a href="#podarki">Подарки</a>
+          <a href="#rsvp">Анкета</a>
+          <a href="#taymer">Таймер</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-shell">
+    <main>
+      <section class="section block block--dark anchor-section" id="priglashenie">
+        <div class="section__inner section__inner--invitation">
+          <h2 class="section-heading invitation-heading">
+            Луна сегодня красивая, не правда ли?
+          </h2>
+          <div class="invitation-script">
+            <p class="invitation-script__p">Говорят, за этими словами скрывается нечто большее.</p>
+            <p class="invitation-script__p">
+              В этот день мы тоже скажем важное —<br />
+              и будем счастливы, если вы окажетесь рядом,<br />
+              когда это произойдёт.
+            </p>
+          </div>
+          <div
+            class="wedding-calendar"
+            role="group"
+            aria-label="Август 2026. День свадьбы — 29 августа."
+          >
+            <p class="wedding-calendar__title">Август, 2026</p>
+            <div class="wedding-calendar__grid" role="grid" aria-hidden="true">
+              <span class="wedding-calendar__cell wedding-calendar__cell--empty"></span>
+              <span class="wedding-calendar__cell wedding-calendar__cell--empty"></span>
+              <span class="wedding-calendar__cell wedding-calendar__cell--empty"></span>
+              <span class="wedding-calendar__cell wedding-calendar__cell--empty"></span>
+              <span class="wedding-calendar__cell wedding-calendar__cell--empty"></span>
+              <span class="wedding-calendar__cell">1</span>
+              <span class="wedding-calendar__cell">2</span>
+              <span class="wedding-calendar__cell">3</span>
+              <span class="wedding-calendar__cell">4</span>
+              <span class="wedding-calendar__cell">5</span>
+              <span class="wedding-calendar__cell">6</span>
+              <span class="wedding-calendar__cell">7</span>
+              <span class="wedding-calendar__cell">8</span>
+              <span class="wedding-calendar__cell">9</span>
+              <span class="wedding-calendar__cell">10</span>
+              <span class="wedding-calendar__cell">11</span>
+              <span class="wedding-calendar__cell">12</span>
+              <span class="wedding-calendar__cell">13</span>
+              <span class="wedding-calendar__cell">14</span>
+              <span class="wedding-calendar__cell">15</span>
+              <span class="wedding-calendar__cell">16</span>
+              <span class="wedding-calendar__cell">17</span>
+              <span class="wedding-calendar__cell">18</span>
+              <span class="wedding-calendar__cell">19</span>
+              <span class="wedding-calendar__cell">20</span>
+              <span class="wedding-calendar__cell">21</span>
+              <span class="wedding-calendar__cell">22</span>
+              <span class="wedding-calendar__cell">23</span>
+              <span class="wedding-calendar__cell">24</span>
+              <span class="wedding-calendar__cell">25</span>
+              <span class="wedding-calendar__cell">26</span>
+              <span class="wedding-calendar__cell">27</span>
+              <span class="wedding-calendar__cell">28</span>
+              <span class="wedding-calendar__cell wedding-calendar__cell--wedding" title="День свадьбы">
+                <svg
+                  class="wedding-calendar__heart"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                  />
+                </svg>
+                <span class="wedding-calendar__num">29</span>
+              </span>
+              <span class="wedding-calendar__cell">30</span>
+              <span class="wedding-calendar__cell">31</span>
+              <span class="wedding-calendar__cell wedding-calendar__cell--empty"></span>
+              <span class="wedding-calendar__cell wedding-calendar__cell--empty"></span>
+              <span class="wedding-calendar__cell wedding-calendar__cell--empty"></span>
+              <span class="wedding-calendar__cell wedding-calendar__cell--empty"></span>
+              <span class="wedding-calendar__cell wedding-calendar__cell--empty"></span>
+              <span class="wedding-calendar__cell wedding-calendar__cell--empty"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section block block--light anchor-section" id="mesto-provedeniya">
+        <div class="section__inner section__inner--map">
+          <h2 class="section-heading">Локация</h2>
+          <p class="lead location-address">
+            г. Минск, пр. Машерова 15/1<br />
+            <span class="location-note">(вход со двора)</span>
+          </p>
+          <div class="map-embed">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?from=api-maps&amp;ll=27.565390093115223%2C53.91549923958346&amp;z=16&amp;l=map&amp;pt=27.5662484%2C53.9148182%2Cpm2rdm"
+              width="560"
+              height="400"
+              allowfullscreen
+              title="Карта: пр. Машерова 15/1, Минск"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <p class="map-external">
+            <a
+              href="https://yandex.ru/maps/?z=16&amp;ll=27.565390093115223,53.91549923958346&amp;l=map&amp;rtext=~53.9148182,27.5662484&amp;origin=jsapi_2_1_79&amp;from=api-maps&amp;utm_source=jsapi"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Открыть в Яндекс.Картах</a
+            >
+          </p>
+        </div>
+      </section>
+
+      <section class="section block block--dark anchor-section" id="plan-dnya">
+        <div class="section__inner section__inner--plan">
+          <h2 class="section-heading">План дня</h2>
+          <ol class="day-plan">
+            <li class="day-plan__item">
+              <span class="day-plan__time">15:00</span>
+              <div class="day-plan__content">
+                <h3 class="day-plan__title">Фуршет</h3>
+                <p class="day-plan__text">
+                  Встречаемся, обнимаемся и настраиваемся на праздник.
+                </p>
+              </div>
+            </li>
+            <li class="day-plan__item">
+              <span class="day-plan__time">16:30</span>
+              <div class="day-plan__content">
+                <h3 class="day-plan__title">Церемония</h3>
+                <p class="day-plan__text">
+                  Самый трогательный момент нашего дня.
+                </p>
+              </div>
+            </li>
+            <li class="day-plan__item">
+              <span class="day-plan__time">17:30</span>
+              <div class="day-plan__content">
+                <h3 class="day-plan__title">Банкет</h3>
+                <p class="day-plan__text">
+                  Празднуем, смеёмся и говорим тёплые слова.
+                </p>
+              </div>
+            </li>
+            <li class="day-plan__item">
+              <span class="day-plan__time">21:30</span>
+              <div class="day-plan__content">
+                <h3 class="day-plan__title">Торт</h3>
+                <p class="day-plan__text">Сладкое завершение вечера.</p>
+              </div>
+            </li>
+            <li class="day-plan__item day-plan__item--last">
+              <span class="day-plan__time">23:30</span>
+              <div class="day-plan__content">
+                <h3 class="day-plan__title">Завершение</h3>
+                <p class="day-plan__text">
+                  Момент, когда не хочется прощаться.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section block block--light anchor-section" id="dresscode">
+        <div class="section__inner section__inner--dresscode">
+          <h2 class="section-heading">Дресс-код</h2>
+          <p class="lead dresscode-lead">
+            Чтобы создать особую атмосферу, мы выбрали дресс-код <strong>total black</strong>.
+          </p>
+          <p class="lead dresscode-lead">
+            Будем благодарны, если вы поддержите его в своих образах.
+          </p>
+          <div
+            class="swiper dresscode-swiper"
+            id="dresscode-swiper"
+            role="region"
+            aria-roledescription="карусель"
+            aria-label="Примеры образов в дресс-коде: мужские и женские силуэты"
+          >
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <figure class="dresscode-swiper__figure">
+                  <img
+                    src="images/dresscode-slider/woman-1.png"
+                    alt="Женский образ: чёрный пиджак, длинная юбка и золотые серьги"
+                    width="682"
+                    height="1024"
+                    loading="eager"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+              <div class="swiper-slide">
+                <figure class="dresscode-swiper__figure">
+                  <img
+                    src="images/dresscode-slider/man-1.png"
+                    alt="Мужской образ: чёрный двубортный пиджак, белые кроссовки, полный рост"
+                    width="682"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+              <div class="swiper-slide">
+                <figure class="dresscode-swiper__figure">
+                  <img
+                    src="images/dresscode-slider/woman-2.png"
+                    alt="Женский образ: короткое чёрное платье и лодочки на каблуке"
+                    width="657"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+              <div class="swiper-slide">
+                <figure class="dresscode-swiper__figure">
+                  <img
+                    src="images/dresscode-slider/man-2.png"
+                    alt="Мужской образ: тёмный костюм и чёрная футболка, полный рост"
+                    width="682"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+              <div class="swiper-slide">
+                <figure class="dresscode-swiper__figure">
+                  <img
+                    src="images/dresscode-slider/woman-3.png"
+                    alt="Женский образ: чёрное платье миди с накидкой и клатч"
+                    width="682"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+              <div class="swiper-slide">
+                <figure class="dresscode-swiper__figure">
+                  <img
+                    src="images/dresscode-slider/man-3.png"
+                    alt="Мужской образ: чёрная рубашка с коротким рукавом и тёмные очки"
+                    width="563"
+                    height="845"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+              <div class="swiper-slide">
+                <figure class="dresscode-swiper__figure">
+                  <img
+                    src="images/dresscode-slider/woman-4.png"
+                    alt="Женский образ: чёрное мини-платье с объёмными рукавами"
+                    width="682"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+              <div class="swiper-slide">
+                <figure class="dresscode-swiper__figure">
+                  <img
+                    src="images/dresscode-slider/man-4.png"
+                    alt="Мужской образ: серый костюм в полоску, свитшот и кроссовки"
+                    width="682"
+                    height="1024"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
+            <div class="swiper-pagination dresscode-swiper__pagination"></div>
+            <div class="swiper-button-prev dresscode-swiper__nav dresscode-swiper__nav--prev"></div>
+            <div class="swiper-button-next dresscode-swiper__nav dresscode-swiper__nav--next"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section block block--dark anchor-section" id="podarki">
+        <div class="section__inner">
+          <h2 class="section-heading">Подарки</h2>
+          <p class="lead">
+            Самый дорогой для нас подарок — ваше присутствие в этот день. Если вы захотите нас порадовать ещё чем-то, мы будем благодарны за поздравление в конверте: так проще не ошибиться с сюрпризом, а мы сможем воплотить планы, которые для нас важны после свадьбы.
+          </p>
+        </div>
+      </section>
+
+      <section class="section block block--light anchor-section" id="rsvp">
+        <div class="section__inner section__inner--rsvp">
+          <h2 class="section-heading">Ответ на приглашение</h2>
+          <p class="rsvp-deadline">
+            Пожалуйста, подтвердите свое присутствие до <strong>01.06.2026</strong>
+          </p>
+
+          <h3 class="rsvp-subheading">Анкета гостя</h3>
+
+          <iframe name="rsvp-google-target" title="Отправка ответа" hidden></iframe>
+
+          <form id="guest-form" action="#" method="post" novalidate>
+            <div class="form-group">
+              <label for="imya">Имя</label>
+              <input type="text" id="imya" name="imya" autocomplete="given-name" required />
+            </div>
+            <div class="form-group">
+              <label for="familiya">Фамилия</label>
+              <input type="text" id="familiya" name="familiya" autocomplete="family-name" required />
+            </div>
+
+            <fieldset class="form-group" aria-label="Подтверждение присутствия">
+              <div class="radio-row">
+                <label><input type="radio" name="attending" value="Да" required /> Я приду</label>
+                <label><input type="radio" name="attending" value="Нет" /> Я не приду</label>
+              </div>
+            </fieldset>
+
+            <div class="form-group">
+              <label for="kolichestvo">Количество персон</label>
+              <input
+                type="text"
+                id="kolichestvo"
+                name="kolichestvo"
+                required
+                inputmode="numeric"
+                autocomplete="off"
+              />
+            </div>
+
+            <button type="submit" class="btn-submit" id="guest-form-submit">Отправить</button>
+            <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section
+        class="countdown-bar block block--dark anchor-section"
+        id="taymer"
+        aria-label="Обратный отсчёт до начала торжества"
+      >
+        <div class="countdown-bar__inner">
+          <p class="countdown-bar__label">До начала мероприятия — <strong>29 августа 2026</strong></p>
+          <div class="countdown" id="countdown" role="timer">
+            <div class="countdown__unit">
+              <span class="countdown__value" id="cd-days">—</span>
+              <span class="countdown__name" id="cd-days-label">дней</span>
+            </div>
+            <div class="countdown__unit">
+              <span class="countdown__value" id="cd-hours">—</span>
+              <span class="countdown__name" id="cd-hours-label">часов</span>
+            </div>
+            <div class="countdown__unit">
+              <span class="countdown__value" id="cd-mins">—</span>
+              <span class="countdown__name" id="cd-mins-label">минут</span>
+            </div>
+            <div class="countdown__unit">
+              <span class="countdown__value" id="cd-secs">—</span>
+              <span class="countdown__name" id="cd-secs-label">секунд</span>
+            </div>
+          </div>
+          <p class="countdown-bar__done" id="countdown-done" hidden>День торжества наступил — ждём вас!</p>
+        </div>
+      </section>
+    </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
