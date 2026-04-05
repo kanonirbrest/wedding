@@ -275,40 +275,32 @@
 })();
 
 (function () {
+  var wrap = document.querySelector(".page-bg-video");
   var v = document.querySelector(".page-bg-video__video");
+  var img = document.querySelector(".page-bg-video__gif");
   if (!v || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  v.muted = true;
+  v.defaultMuted = true;
+  v.playsInline = true;
+
   function tryPlay() {
     v.play().catch(function () {});
   }
   tryPlay();
   /* На части мобильных браузеров автозапуск видео срабатывает только после жеста пользователя. */
   document.addEventListener("touchstart", tryPlay, { passive: true, once: true });
+  document.addEventListener("pointerdown", tryPlay, { passive: true, once: true });
   document.addEventListener("click", tryPlay, { passive: true, once: true });
-})();
 
-(function () {
-  var img = document.querySelector(".page-bg-video__gif");
-  if (!img) return;
-  var url = img.getAttribute("data-src");
-  if (!url) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  var mq = window.matchMedia("(max-width: 900px) and (hover: none) and (pointer: coarse)");
-
-  function syncGifSrc() {
-    if (mq.matches) {
-      if (img.getAttribute("src") !== url) img.setAttribute("src", url);
-    } else {
-      img.removeAttribute("src");
-    }
+  function showGifFallback() {
+    if (!wrap || !img) return;
+    var url = img.getAttribute("data-src");
+    if (!url) return;
+    img.setAttribute("src", url);
+    wrap.classList.add("page-bg-video--use-gif");
   }
-
-  syncGifSrc();
-  if (mq.addEventListener) {
-    mq.addEventListener("change", syncGifSrc);
-  } else {
-    mq.addListener(syncGifSrc);
-  }
+  v.addEventListener("error", showGifFallback);
 })();
 
 (function () {
