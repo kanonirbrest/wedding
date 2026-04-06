@@ -59,6 +59,69 @@
 })();
 
 (function () {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var rafId = null;
+
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function cancelSmoothScroll() {
+    if (rafId != null) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  }
+
+  function smoothScrollTo(targetY) {
+    cancelSmoothScroll();
+    var startY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var diff = targetY - startY;
+    if (Math.abs(diff) < 2) return;
+    var duration = Math.min(3400, Math.max(1000, Math.abs(diff) * 0.75));
+    var start = performance.now();
+
+    function step(now) {
+      var t = Math.min(1, (now - start) / duration);
+      window.scrollTo(0, Math.round(startY + diff * easeOutCubic(t)));
+      if (t < 1) {
+        rafId = requestAnimationFrame(step);
+      } else {
+        rafId = null;
+      }
+    }
+    rafId = requestAnimationFrame(step);
+  }
+
+  document.addEventListener(
+    "click",
+    function (e) {
+      var a = e.target.closest && e.target.closest("a[href]");
+      if (!a) return;
+      var href = a.getAttribute("href");
+      if (!href || href.charAt(0) !== "#" || href.length < 2) return;
+      if (a.target && a.target !== "_self") return;
+      var id = href.slice(1);
+      if (!id || !/^[A-Za-z0-9_-]+$/.test(id)) return;
+      var el = document.getElementById(id);
+      if (!el) return;
+
+      e.preventDefault();
+      var pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+      var y = el.getBoundingClientRect().top + window.pageYOffset - pad;
+      smoothScrollTo(Math.max(0, y));
+      if (history.pushState) {
+        history.pushState(null, "", href);
+      } else {
+        window.location.hash = href;
+      }
+    },
+    false
+  );
+})();
+
+(function () {
   var GOOGLE_ACTION =
     "https://docs.google.com/forms/d/e/1FAIpQLSf0cEIxWObF_ygQ8I200GgJb5bJmXvnVmhfmUZIFqcdC8LPeQ/formResponse";
   var ENTRY = {
@@ -205,7 +268,7 @@
 
   new Swiper(el, {
     loop: true,
-    speed: reduceMotion ? 0 : 580,
+    speed: reduceMotion ? 0 : 1100,
     spaceBetween: 14,
     slidesPerView: 1,
     grabCursor: true,

@@ -123,7 +123,14 @@
 
 html {
   scroll-padding-top: calc(var(--site-header-sticky-offset) + 0.65rem);
+  scroll-behavior: smooth;
   background-color: var(--color-backdrop);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 .anchor-section {
@@ -170,6 +177,9 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Смещение кадра вверх — луна в planet.mp4 чаще в верхней части кадра */
+  object-position: center 28%;
+  filter: brightness(1.08) saturate(1.06);
   pointer-events: none;
 }
 
@@ -209,8 +219,9 @@ body {
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background-color: #ffffff;
+  background: transparent;
   backface-visibility: hidden;
+  pointer-events: none;
 }
 
 .site-hero__inner {
@@ -228,32 +239,37 @@ body {
 }
 
 .site-hero__title {
-  margin: calc(clamp(0.55rem, 2vh, 1.5rem) - 10px) 0 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
   padding: 0;
-  background: none;
-  line-height: 0;
-  font-size: 0;
-  text-rendering: optimizeLegibility;
-}
-
-.site-hero__title-img {
-  display: block;
-  width: clamp(9.5rem, 30vw, 14.5rem);
-  height: auto;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
 }
 
 .site-hero__meta {
+  position: absolute;
+  left: var(--page-gutter);
+  right: var(--page-gutter);
+  bottom: calc(clamp(4.75rem, 11vh, 6.75rem) + env(safe-area-inset-bottom, 0px));
+  z-index: 2;
   margin: 0;
-  margin-top: -clamp(0.55rem, 2vh, 1.15rem);
-  font-family: var(--font-sans);
-  font-size: clamp(0.66rem, 0.45vw + 0.58rem, 0.8rem);
-  font-weight: 500;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: rgba(20, 20, 20, 0.78);
+  max-width: min(48rem, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--font-calligraphy);
+  font-weight: 700;
+  font-size: clamp(2.55rem, 6vw + 1.43rem, 4.43rem);
+  line-height: 1.22;
+  letter-spacing: -0.035em;
+  text-transform: none;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  color: #ffffff;
 }
 
 .site-hero__scroll {
@@ -268,11 +284,11 @@ body {
   margin: 0;
   padding: 0.5rem;
   font-family: var(--font-sans);
-  font-size: 0.52rem;
+  font-size: 0.93rem;
   font-weight: 500;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(20, 20, 20, 0.55);
+  color: rgba(255, 255, 255, 0.88);
   border: none;
   border-bottom: none;
   transform: translateX(-50%);
@@ -280,11 +296,11 @@ body {
 }
 
 .site-hero__scroll:hover {
-  color: var(--color-ink);
+  color: #ffffff;
 }
 
 .site-hero__scroll:focus-visible {
-  outline: 2px solid rgba(20, 20, 20, 0.45);
+  outline: 2px solid rgba(255, 255, 255, 0.55);
   outline-offset: 6px;
 }
 
@@ -387,15 +403,17 @@ img {
   display: block;
 }
 
-img.site-hero__cover {
+/* Силуэт на всю высоту; multiply убирает белый фон кадра; opacity — луна и небо чуть просвечивают сквозь фигуры */
+img.site-hero__silhouette {
   position: absolute;
   inset: 0;
-  box-sizing: border-box;
   width: 100%;
   height: 100%;
   max-width: none;
   object-fit: cover;
-  object-position: center center;
+  object-position: 78% 50%;
+  mix-blend-mode: multiply;
+  opacity: 0.82;
   pointer-events: none;
 }
 
@@ -1400,14 +1418,12 @@ a:hover {
   font-size: clamp(1.74rem, 3.48vw, 2.14rem);
   line-height: 1.22;
   text-align: left;
-  text-shadow: 0 0.08em 0.65em rgba(0, 0, 0, 0.45);
 }
 
 #plan-dnya .day-plan__text {
   font-size: 1.348rem;
   line-height: 1.42;
   text-align: left;
-  text-shadow: 0 0.06em 0.5em rgba(0, 0, 0, 0.35);
 }
 
 #plan-dnya .day-plan__item:hover {
