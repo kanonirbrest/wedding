@@ -61,7 +61,38 @@
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+  var raf =
+    window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    function (cb) {
+      return setTimeout(function () {
+        cb(performance.now());
+      }, 1000 / 60);
+    };
+  var caf =
+    window.cancelAnimationFrame ||
+    window.webkitCancelAnimationFrame ||
+    function (id) {
+      clearTimeout(id);
+    };
+
   var rafId = null;
+
+  function getScrollTop() {
+    return (
+      window.pageYOffset ||
+      (document.documentElement && document.documentElement.scrollTop) ||
+      (document.body && document.body.scrollTop) ||
+      0
+    );
+  }
+
+  function setScrollTop(y) {
+    y = Math.round(y);
+    window.scrollTo(0, y);
+    if (document.documentElement) document.documentElement.scrollTop = y;
+    if (document.body) document.body.scrollTop = y;
+  }
 
   function easeOutCubic(t) {
     return 1 - Math.pow(1 - t, 3);
@@ -69,14 +100,14 @@
 
   function cancelSmoothScroll() {
     if (rafId != null) {
-      cancelAnimationFrame(rafId);
+      caf(rafId);
       rafId = null;
     }
   }
 
   function smoothScrollTo(targetY) {
     cancelSmoothScroll();
-    var startY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var startY = getScrollTop();
     var diff = targetY - startY;
     if (Math.abs(diff) < 2) return;
     var duration = 500;
@@ -84,14 +115,14 @@
 
     function step(now) {
       var t = Math.min(1, (now - start) / duration);
-      window.scrollTo(0, Math.round(startY + diff * easeOutCubic(t)));
+      setScrollTop(startY + diff * easeOutCubic(t));
       if (t < 1) {
-        rafId = requestAnimationFrame(step);
+        rafId = raf(step);
       } else {
         rafId = null;
       }
     }
-    rafId = requestAnimationFrame(step);
+    rafId = raf(step);
   }
 
   document.addEventListener(
@@ -109,10 +140,12 @@
 
       e.preventDefault();
       var pad = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
-      var y = el.getBoundingClientRect().top + window.pageYOffset - pad;
+      var y = el.getBoundingClientRect().top + getScrollTop() - pad;
       smoothScrollTo(Math.max(0, y));
       if (history.pushState) {
-        history.pushState(null, "", href);
+        var path = window.location.pathname || "";
+        var search = window.location.search || "";
+        history.pushState(null, "", path + search + href);
       } else {
         window.location.hash = href;
       }
@@ -304,6 +337,8 @@
   v.muted = true;
   v.defaultMuted = true;
   v.playsInline = true;
+  v.setAttribute("playsinline", "");
+  v.setAttribute("webkit-playsinline", "");
 
   function showGifFallback() {
     if (!wrap || !img) return;
