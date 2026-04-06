@@ -79,7 +79,7 @@
     var startY = window.pageYOffset || document.documentElement.scrollTop || 0;
     var diff = targetY - startY;
     if (Math.abs(diff) < 2) return;
-    var duration = Math.min(3400, Math.max(1000, Math.abs(diff) * 0.75));
+    var duration = 500;
     var start = performance.now();
 
     function step(now) {
