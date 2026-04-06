@@ -1,12 +1,4 @@
 @font-face {
-  font-family: "Adine Kirnberg Script";
-  src: url("../fonts/adine-kirnberg/AdinekirnbergScript-3z5y.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Antarctic";
   src: url("../fonts/antarctic/Antarctic.otf") format("opentype");
   font-weight: 400;
@@ -31,9 +23,8 @@
   --font-display: "Playfair Display", "Georgia", serif;
   --font-serif: "Cormorant Garamond", "Georgia", serif;
   --font-sans: "Montserrat", system-ui, sans-serif;
-  /* Antarctic: локальный декоративный; далее — Marck (GF), Adine, запасной стек */
-  --font-calligraphy: "Antarctic", "Marck Script", "Adine Kirnberg Script", "Great Vibes", "Segoe Script", cursive;
-  --font-site-logo: "Antarctic", "Marck Script", "Adine Kirnberg Script", "Great Vibes", "Segoe Script", cursive;
+  --font-calligraphy: "Antarctic", "Segoe Script", "Apple Chancery", cursive;
+  --font-site-logo: "Antarctic", "Segoe Script", "Apple Chancery", cursive;
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.75rem;
@@ -112,7 +103,6 @@ body {
   display: none;
 }
 
-/* GIF только если MP4 не загрузился (см. main.js: класс page-bg-video--use-gif). */
 .page-bg-video--use-gif .page-bg-video__video {
   display: none;
 }
@@ -145,11 +135,6 @@ body {
   z-index: 0;
   overflow: hidden;
   background-color: #1a1a1a;
-  /* Fallback, если <img> не подтянулся; путь относительно этого CSS-файла */
-  background-image: url("../images/hero-cover.jpg");
-  background-size: cover;
-  background-position: center 38%;
-  background-repeat: no-repeat;
   transform-origin: center 38%;
   backface-visibility: hidden;
   will-change: transform;
@@ -159,7 +144,6 @@ body {
   position: absolute;
   inset: 0;
   z-index: 1;
-  /* Ч/б фото: затемнение для белого текста и заголовка */
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.38) 0%,
@@ -364,7 +348,6 @@ img {
   display: block;
 }
 
-/* Глобальные img { height: auto } ломают object-fit у абсолютной обложки героя */
 img.site-hero__cover {
   position: absolute;
   inset: 0;

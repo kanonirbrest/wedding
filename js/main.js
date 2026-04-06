@@ -297,22 +297,20 @@
     var p = v.play();
     if (!p || typeof p.catch !== "function") return;
     p.catch(function () {
-      /* После жеста play() всё ещё падает — показываем GIF (iOS и др.). */
       if (afterUserGesture) showGifFallback();
     });
   }
 
   tryPlay(false);
-  /* На части мобильных браузеров автозапуск видео срабатывает только после жеста пользователя. */
-  document.addEventListener("touchstart", function () {
-    tryPlay(true);
-  }, { passive: true, once: true });
-  document.addEventListener("pointerdown", function () {
-    tryPlay(true);
-  }, { passive: true, once: true });
-  document.addEventListener("click", function () {
-    tryPlay(true);
-  }, { passive: true, once: true });
+  ["touchstart", "pointerdown", "click"].forEach(function (ev) {
+    document.addEventListener(
+      ev,
+      function () {
+        tryPlay(true);
+      },
+      { passive: true, once: true }
+    );
+  });
 
   v.addEventListener("error", showGifFallback);
 })();
@@ -355,13 +353,7 @@
   var inertiaFramesLeft = 0;
 
   function scrollY() {
-    return (
-      window.scrollY ||
-      window.pageYOffset ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop ||
-      0
-    );
+    return window.scrollY || document.documentElement.scrollTop || 0;
   }
 
   function applyParallax() {
@@ -416,7 +408,6 @@
   window.addEventListener("scroll", onScrollOrResize, { passive: true });
   window.addEventListener("resize", onScrollOrResize, { passive: true });
 
-  /* Мобильные браузеры (особенно iOS Safari) редко шлют scroll во время жеста и инерции — обновляем параллакс от касаний и пару секунд после отпускания пальца. */
   window.addEventListener("touchstart", onScrollOrResize, { passive: true });
   window.addEventListener("touchmove", onScrollOrResize, { passive: true });
   window.addEventListener("touchend", startInertiaSync, { passive: true });
