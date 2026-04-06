@@ -77,7 +77,7 @@
 }
 
 :root {
-  --color-backdrop: #000000;
+  --color-backdrop: #ffffff;
   --color-surface: rgba(255, 255, 255, 0.82);
   --color-surface-alt: rgba(255, 255, 255, 0.74);
   --color-surface-strong: rgba(255, 255, 255, 0.9);
@@ -109,6 +109,10 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --page-video-dark-scrim: rgba(0, 0, 0, 0.58);
   --page-video-light-scrim: rgba(255, 255, 255, 0.76);
+  /* Высота липкой шапки: safe-area + отступы + одна строка имени + кнопка */
+  --site-header-sticky-offset: calc(
+    max(env(safe-area-inset-top, 0px), 0.55rem) + 0.55rem + max(2.35rem, clamp(4.06rem, 12.6vw, 4.83rem)) + 2px
+  );
 }
 
 *,
@@ -118,7 +122,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--site-header-sticky-offset) + 0.65rem);
   background-color: var(--color-backdrop);
 }
 
@@ -143,6 +147,7 @@ body {
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  background-color: #ffffff;
 }
 
 .page-bg-video__media {
@@ -155,7 +160,6 @@ body {
   min-height: 100%;
   transform: translate(-50%, -50%);
   backface-visibility: hidden;
-  will-change: transform;
 }
 
 .page-bg-video__video,
@@ -187,10 +191,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
   min-height: 100dvh;
-  padding: clamp(4rem, 12vh, 6rem) var(--page-gutter) clamp(5rem, 14vh, 7rem);
+  padding: calc(clamp(2.25rem, 7vh, 4.25rem) + var(--site-header-sticky-offset))
+    var(--page-gutter) clamp(5rem, 14vh, 7rem);
   overflow: hidden;
   text-align: center;
 }
@@ -204,81 +209,51 @@ body {
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background-color: #1a1a1a;
-  transform-origin: center 38%;
+  background-color: #ffffff;
   backface-visibility: hidden;
-  will-change: transform;
-}
-
-.site-hero__scrim {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.38) 0%,
-    rgba(0, 0, 0, 0.22) 42%,
-    rgba(0, 0, 0, 0.28) 58%,
-    rgba(0, 0, 0, 0.62) 100%
-  );
-  pointer-events: none;
 }
 
 .site-hero__inner {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: min(50rem, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  transform: translateY(calc(-1 * clamp(0.9rem, 3.25vh, 2.35rem)));
 }
 
 .site-hero__title {
-  margin: 0;
-  font-family: var(--font-site-logo);
-  font-weight: 400;
-  font-size: clamp(6.08rem, 19.41vw, 9.44rem);
-  line-height: 1.12;
-  letter-spacing: -0.035em;
-  color: #ffffff;
-  text-shadow: 0 0.1em 1.2em rgba(0, 0, 0, 0.45);
+  margin: calc(clamp(0.55rem, 2vh, 1.5rem) - 10px) 0 0;
+  padding: 0;
+  background: none;
+  line-height: 0;
+  font-size: 0;
   text-rendering: optimizeLegibility;
 }
 
+.site-hero__title-img {
+  display: block;
+  width: clamp(9.5rem, 30vw, 14.5rem);
+  height: auto;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .site-hero__meta {
-  margin: var(--space-md) 0 0;
+  margin: 0;
+  margin-top: -clamp(0.55rem, 2vh, 1.15rem);
   font-family: var(--font-sans);
   font-size: clamp(0.66rem, 0.45vw + 0.58rem, 0.8rem);
   font-weight: 500;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.88);
-}
-
-.site-hero__cta {
-  display: inline-block;
-  margin-top: var(--space-lg);
-  padding: 0.85rem 1.75rem;
-  font-family: var(--font-sans);
-  font-size: 0.58rem;
-  font-weight: 600;
-  letter-spacing: 0.26em;
-  text-transform: uppercase;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  transition:
-    background 0.3s var(--ease-out),
-    color 0.3s var(--ease-out),
-    border-color 0.3s var(--ease-out);
-}
-
-.site-hero__cta:hover {
-  background: #ffffff;
-  color: #141414;
-  border-color: #ffffff;
-}
-
-.site-hero__cta:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 4px;
+  color: rgba(20, 20, 20, 0.78);
 }
 
 .site-hero__scroll {
@@ -297,7 +272,7 @@ body {
   font-weight: 500;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(20, 20, 20, 0.55);
   border: none;
   border-bottom: none;
   transform: translateX(-50%);
@@ -305,11 +280,11 @@ body {
 }
 
 .site-hero__scroll:hover {
-  color: #ffffff;
+  color: var(--color-ink);
 }
 
 .site-hero__scroll:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline: 2px solid rgba(20, 20, 20, 0.45);
   outline-offset: 6px;
 }
 
@@ -341,17 +316,11 @@ body {
   .site-hero__scroll-icon {
     animation: none;
   }
-
-  .site-hero__bg,
-  .page-bg-video__media {
-    will-change: auto;
-  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .site-hero__title,
-  .site-hero__meta,
-  .site-hero__cta {
+  .site-hero__meta {
     opacity: 0;
     animation: site-hero-reveal 1.05s var(--ease-out) forwards;
   }
@@ -362,10 +331,6 @@ body {
 
   .site-hero__meta {
     animation-delay: 0.32s;
-  }
-
-  .site-hero__cta {
-    animation-delay: 0.52s;
   }
 
   .site-hero__scroll {
@@ -407,6 +372,10 @@ body {
     display: none;
   }
 
+  .site-hero__bg {
+    background-color: #ffffff;
+  }
+
   :root {
     --page-video-light-scrim: rgba(255, 255, 255, 0.92);
   }
@@ -421,13 +390,12 @@ img {
 img.site-hero__cover {
   position: absolute;
   inset: 0;
-  max-width: none;
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
-  min-width: 100%;
-  min-height: 100%;
+  max-width: none;
   object-fit: cover;
-  object-position: center 38%;
+  object-position: center center;
   pointer-events: none;
 }
 
@@ -448,13 +416,12 @@ a:hover {
 .site-header {
   position: fixed;
   top: 0;
+  left: 0;
   right: 0;
-  left: auto;
   z-index: 100;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: auto;
+  /* Только sticky-bar в потоке — высота шапки не растёт при открытии меню */
+  display: block;
+  width: 100%;
   max-width: none;
   margin: 0;
   padding: 0;
@@ -463,15 +430,66 @@ a:hover {
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+  overflow: visible;
+}
+
+.site-header__sticky-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  width: 100%;
+  padding-top: max(env(safe-area-inset-top, 0px), 0.55rem);
+  padding-bottom: 0.55rem;
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(20, 20, 20, 0.08);
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.site-header__brand {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-calligraphy);
+  font-size: clamp(2.205rem, 5.775vw, 3.108rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  text-transform: none;
+  color: #141414;
+  -webkit-text-fill-color: #141414;
+  line-height: 1.25;
+  text-align: left;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+.site-header__menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
 }
 
 .site-header__inner {
   position: relative;
-  padding: clamp(0.75rem, 2vw, 1.1rem) clamp(0.75rem, 2.5vw, 1.35rem);
   display: flex;
   align-items: center;
   justify-content: flex-end;
   min-height: 0;
+  padding: 0;
+  margin: 0;
   background: transparent;
 }
 
@@ -489,17 +507,17 @@ a:hover {
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
-  color: #ffffff;
+  color: var(--color-ink);
   border-radius: 0;
   transition: color 0.2s var(--ease-out);
 }
 
 .site-nav-toggle:hover {
-  color: rgba(255, 255, 255, 0.72);
+  color: var(--color-ink-muted);
 }
 
 .site-nav-toggle:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.85);
+  outline: 2px solid var(--color-ink);
   outline-offset: 3px;
 }
 
@@ -540,11 +558,17 @@ a:hover {
 }
 
 .site-nav-panel {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  right: var(--page-gutter);
+  left: auto;
+  z-index: 101;
   width: min(100vw - 1.5rem, 19rem);
+  max-width: calc(100vw - var(--page-gutter) * 2);
   max-height: 0;
   overflow: hidden;
   min-height: 0;
-  margin: 0 clamp(0.75rem, 2.5vw, 1.35rem) 0 0;
+  margin: 0;
   padding: 0;
   border: 0;
   border-radius: 0;
@@ -1326,12 +1350,17 @@ a:hover {
 }
 
 /* План дня: крупное время «водяным знаком» под заголовком и текстом */
+#plan-dnya .day-plan {
+  text-align: left;
+}
+
 #plan-dnya .day-plan__item {
   position: relative;
   display: block;
   grid-template-columns: unset;
   gap: 0;
   padding: clamp(1.35rem, 3.2vw, 2.15rem) 0 clamp(1.85rem, 4.2vw, 3rem);
+  text-align: left;
 }
 
 #plan-dnya .day-plan__time {
@@ -1344,12 +1373,12 @@ a:hover {
   padding: 0;
   width: 100%;
   font-family: var(--font-display);
-  font-size: clamp(7.36rem, 19.55vw, 13.46rem);
+  font-size: clamp(5.52rem, 14.66vw, 10.1rem);
   font-weight: 500;
   line-height: 0.78;
   letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.14);
-  text-align: center;
+  text-align: left;
   pointer-events: none;
   user-select: none;
   white-space: nowrap;
@@ -1358,11 +1387,11 @@ a:hover {
 #plan-dnya .day-plan__content {
   position: relative;
   z-index: 1;
-  padding-top: clamp(3.75rem, 10vw, 6.05rem);
+  padding-top: clamp(2.85rem, 7.6vw, 4.55rem);
   padding-left: clamp(1.85rem, 4.5vw, 3.65rem);
   padding-right: clamp(1.85rem, 4.5vw, 3.65rem);
   max-width: 38rem;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: auto;
   text-align: left;
 }
@@ -1370,12 +1399,14 @@ a:hover {
 #plan-dnya .day-plan__title {
   font-size: clamp(1.74rem, 3.48vw, 2.14rem);
   line-height: 1.22;
+  text-align: left;
   text-shadow: 0 0.08em 0.65em rgba(0, 0, 0, 0.45);
 }
 
 #plan-dnya .day-plan__text {
   font-size: 1.348rem;
   line-height: 1.42;
+  text-align: left;
   text-shadow: 0 0.06em 0.5em rgba(0, 0, 0, 0.35);
 }
 
@@ -1409,13 +1440,13 @@ a:hover {
   }
 
   #plan-dnya .day-plan__time {
-    text-align: center;
-    font-size: clamp(5.81rem, 34.5vw, 10.98rem);
+    text-align: left;
+    font-size: clamp(4.36rem, 25.88vw, 8.24rem);
     line-height: 0.8;
   }
 
   #plan-dnya .day-plan__content {
-    padding-top: clamp(3.05rem, 16vw, 4.55rem);
+    padding-top: clamp(2.3rem, 12vw, 3.4rem);
     padding-left: clamp(1.35rem, 6.25vw, 2.45rem);
     padding-right: clamp(1.35rem, 6.25vw, 2.45rem);
   }
@@ -1646,192 +1677,4 @@ fieldset.form-group {
   font-size: 0.95rem;
   color: var(--color-ink-muted);
   min-height: 1.5em;
-}
-
-/* --- Появление при скролле (см. js/main.js) --- */
-main > section.reveal--cascade {
-  opacity: 1;
-  transform: none;
-}
-
-.reveal--cascade .section-heading,
-.reveal--cascade .invitation-heading,
-.reveal--cascade .invitation-script__p,
-.reveal--cascade .wedding-calendar,
-.reveal--cascade .lead,
-.reveal--cascade .location-address,
-.reveal--cascade .map-embed,
-.reveal--cascade .map-external,
-.reveal--cascade .dresscode-swiper,
-.reveal--cascade .dresscode-lead,
-.reveal--cascade .day-plan__item,
-.reveal--cascade .rsvp-deadline,
-.reveal--cascade .rsvp-subheading,
-.reveal--cascade #guest-form,
-.reveal--cascade .countdown-bar__label,
-.reveal--cascade .countdown__unit {
-  opacity: 0;
-  transform: translate3d(0, 1.35rem, 0);
-  transition:
-    opacity 0.82s var(--ease-out),
-    transform 0.82s var(--ease-out);
-}
-
-.reveal--cascade.is-visible .section-heading,
-.reveal--cascade.is-visible .invitation-heading,
-.reveal--cascade.is-visible .invitation-script__p,
-.reveal--cascade.is-visible .wedding-calendar,
-.reveal--cascade.is-visible .lead,
-.reveal--cascade.is-visible .location-address,
-.reveal--cascade.is-visible .map-embed,
-.reveal--cascade.is-visible .map-external,
-.reveal--cascade.is-visible .dresscode-swiper,
-.reveal--cascade.is-visible .dresscode-lead,
-.reveal--cascade.is-visible .day-plan__item,
-.reveal--cascade.is-visible .rsvp-deadline,
-.reveal--cascade.is-visible .rsvp-subheading,
-.reveal--cascade.is-visible #guest-form,
-.reveal--cascade.is-visible .countdown-bar__label,
-.reveal--cascade.is-visible .countdown__unit {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
-#priglashenie.reveal--cascade.is-visible .invitation-heading {
-  transition-delay: 0.06s;
-}
-
-#priglashenie.reveal--cascade.is-visible .invitation-script__p:nth-of-type(1) {
-  transition-delay: 0.14s;
-}
-
-#priglashenie.reveal--cascade.is-visible .invitation-script__p:nth-of-type(2) {
-  transition-delay: 0.24s;
-}
-
-#priglashenie.reveal--cascade.is-visible .wedding-calendar {
-  transition-delay: 0.36s;
-}
-
-#mesto-provedeniya.reveal--cascade.is-visible .section-heading {
-  transition-delay: 0.06s;
-}
-
-#mesto-provedeniya.reveal--cascade.is-visible .location-address {
-  transition-delay: 0.14s;
-}
-
-#mesto-provedeniya.reveal--cascade.is-visible .map-embed {
-  transition-delay: 0.24s;
-}
-
-#mesto-provedeniya.reveal--cascade.is-visible .map-external {
-  transition-delay: 0.34s;
-}
-
-#dresscode.reveal--cascade.is-visible .section-heading {
-  transition-delay: 0.06s;
-}
-
-#dresscode.reveal--cascade.is-visible .dresscode-lead:nth-of-type(1) {
-  transition-delay: 0.12s;
-}
-
-#dresscode.reveal--cascade.is-visible .dresscode-lead:nth-of-type(2) {
-  transition-delay: 0.18s;
-}
-
-#dresscode.reveal--cascade.is-visible .dresscode-swiper {
-  transition-delay: 0.28s;
-}
-
-#podarki.reveal--cascade.is-visible .section-heading {
-  transition-delay: 0.06s;
-}
-
-#podarki.reveal--cascade.is-visible .lead {
-  transition-delay: 0.14s;
-}
-
-#rsvp.reveal--cascade.is-visible .section-heading {
-  transition-delay: 0.06s;
-}
-
-#rsvp.reveal--cascade.is-visible .rsvp-deadline {
-  transition-delay: 0.12s;
-}
-
-#rsvp.reveal--cascade.is-visible .rsvp-subheading {
-  transition-delay: 0.18s;
-}
-
-#rsvp.reveal--cascade.is-visible #guest-form {
-  transition-delay: 0.26s;
-}
-
-#plan-dnya.reveal--cascade.is-visible .section-heading {
-  transition-delay: 0.06s;
-}
-
-#plan-dnya.reveal--cascade.is-visible .day-plan__item:nth-child(1) {
-  transition-delay: 0.12s;
-}
-
-#plan-dnya.reveal--cascade.is-visible .day-plan__item:nth-child(2) {
-  transition-delay: 0.2s;
-}
-
-#plan-dnya.reveal--cascade.is-visible .day-plan__item:nth-child(3) {
-  transition-delay: 0.28s;
-}
-
-#plan-dnya.reveal--cascade.is-visible .day-plan__item:nth-child(4) {
-  transition-delay: 0.36s;
-}
-
-#plan-dnya.reveal--cascade.is-visible .day-plan__item:nth-child(5) {
-  transition-delay: 0.44s;
-}
-
-#taymer.reveal--cascade.is-visible .countdown-bar__label {
-  transition-delay: 0.08s;
-}
-
-#taymer.reveal--cascade.is-visible .countdown__unit:nth-child(1) {
-  transition-delay: 0.16s;
-}
-
-#taymer.reveal--cascade.is-visible .countdown__unit:nth-child(2) {
-  transition-delay: 0.24s;
-}
-
-#taymer.reveal--cascade.is-visible .countdown__unit:nth-child(3) {
-  transition-delay: 0.32s;
-}
-
-#taymer.reveal--cascade.is-visible .countdown__unit:nth-child(4) {
-  transition-delay: 0.4s;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  main > section.reveal--cascade .section-heading,
-  main > section.reveal--cascade .invitation-heading,
-  main > section.reveal--cascade .invitation-script__p,
-  main > section.reveal--cascade .wedding-calendar,
-  main > section.reveal--cascade .lead,
-  main > section.reveal--cascade .location-address,
-  main > section.reveal--cascade .map-embed,
-  main > section.reveal--cascade .map-external,
-  main > section.reveal--cascade .dresscode-swiper,
-  main > section.reveal--cascade .dresscode-lead,
-  main > section.reveal--cascade .day-plan__item,
-  main > section.reveal--cascade .rsvp-deadline,
-  main > section.reveal--cascade .rsvp-subheading,
-  main > section.reveal--cascade #guest-form,
-  main > section.reveal--cascade .countdown-bar__label,
-  main > section.reveal--cascade .countdown__unit {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
 }

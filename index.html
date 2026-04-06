@@ -14,8 +14,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Свадьба Александра и Екатерины</title>
     <link rel="preload" href="images/hero-cover.jpg" as="image" />
-    <link rel="preload" href="videos/lunagif.mp4" as="video" type="video/mp4" />
+    <link rel="preload" href="images/hero-monogram.png" as="image" />
+    <link rel="preload" href="videos/planet.mp4" as="video" type="video/mp4" />
+    <link
+      rel="preload"
+      href="fonts/antarctic/Antarctic.otf"
+      as="font"
+      type="font/otf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/cy-grotesk-grand/CyGroteskGrand-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/gilroy/Gilroy-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/gilroy/Gilroy-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/cy-grotesk-grand/CyGroteskGrand-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/cy-grotesk-grand/CyGroteskGrand-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/gilroy/Gilroy-MediumItalic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/gilroy/Gilroy-Semibold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://yandex.ru" />
+    <link rel="preconnect" href="https://yandex.ru" />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+      as="script"
+    />
+    <link rel="preload" href="js/main.js" as="script" />
     <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
@@ -27,7 +92,7 @@
       <div class="page-bg-video__media">
         <video
           class="page-bg-video__video"
-          src="videos/lunagif.mp4"
+          src="videos/planet.mp4"
           autoplay
           muted
           loop
@@ -37,7 +102,6 @@
         ></video>
         <img
           class="page-bg-video__gif"
-          data-src="images/lunagif.gif"
           alt=""
           width="240"
           height="240"
@@ -52,17 +116,25 @@
           class="site-hero__cover"
           src="images/hero-cover.jpg"
           alt=""
-          width="785"
+          width="768"
           height="1024"
           decoding="async"
           fetchpriority="high"
         />
       </div>
-      <div class="site-hero__scrim" aria-hidden="true"></div>
       <div class="site-hero__inner">
-        <h1 class="site-hero__title">Александр и Екатерина</h1>
+        <h1 class="site-hero__title">
+          <img
+            class="site-hero__title-img"
+            src="images/hero-monogram.png"
+            alt="Александр и Екатерина"
+            width="1000"
+            height="1000"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </h1>
         <p class="site-hero__meta">29 августа 2026 · Минск</p>
-        <a class="site-hero__cta" href="#priglashenie">Открыть приглашение</a>
       </div>
       <a class="site-hero__scroll" href="#priglashenie">
         <span class="site-hero__scroll-text">Листайте вниз</span>
@@ -70,19 +142,24 @@
       </a>
     </section>
     <header class="site-header" id="site-header">
-      <div class="site-header__inner">
-        <button
-          type="button"
-          class="site-nav-toggle"
-          id="site-nav-toggle"
-          aria-expanded="false"
-          aria-controls="site-nav-panel"
-          aria-label="Открыть меню разделов"
-        >
-          <span class="site-nav-toggle__bar" aria-hidden="true"></span>
-          <span class="site-nav-toggle__bar" aria-hidden="true"></span>
-          <span class="site-nav-toggle__bar" aria-hidden="true"></span>
-        </button>
+      <div class="site-header__sticky-bar">
+        <p class="site-header__brand">Александр и Екатерина</p>
+        <div class="site-header__menu">
+          <div class="site-header__inner">
+            <button
+              type="button"
+              class="site-nav-toggle"
+              id="site-nav-toggle"
+              aria-expanded="false"
+              aria-controls="site-nav-panel"
+              aria-label="Открыть меню разделов"
+            >
+              <span class="site-nav-toggle__bar" aria-hidden="true"></span>
+              <span class="site-nav-toggle__bar" aria-hidden="true"></span>
+              <span class="site-nav-toggle__bar" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
       </div>
       <div id="site-nav-panel" class="site-nav-panel" inert>
         <nav class="site-nav site-nav--panel" aria-label="Разделы сайта">
