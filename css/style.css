@@ -6,6 +6,76 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Cy Grotesk Grand";
+  src:
+    local("Cy Grotesk Grand Regular"),
+    url("../fonts/cy-grotesk-grand/CyGroteskGrand-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cy Grotesk Grand";
+  src:
+    local("Cy Grotesk Grand Medium"),
+    url("../fonts/cy-grotesk-grand/CyGroteskGrand-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cy Grotesk Grand";
+  src:
+    local("Cy Grotesk Grand Bold"),
+    url("../fonts/cy-grotesk-grand/CyGroteskGrand-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src:
+    local("Gilroy Regular"),
+    url("../fonts/gilroy/Gilroy-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src:
+    local("Gilroy Medium"),
+    url("../fonts/gilroy/Gilroy-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src:
+    local("Gilroy Medium Italic"),
+    url("../fonts/gilroy/Gilroy-MediumItalic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src:
+    local("Gilroy Semibold"),
+    url("../fonts/gilroy/Gilroy-Semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --color-backdrop: #000000;
   --color-surface: rgba(255, 255, 255, 0.82);
@@ -20,9 +90,9 @@
   --color-accent-bright: #2a2a2a;
   --color-line: rgba(20, 20, 20, 0.1);
   --color-line-strong: rgba(20, 20, 20, 0.22);
-  --font-display: "Playfair Display", "Georgia", serif;
-  --font-serif: "Cormorant Garamond", "Georgia", serif;
-  --font-sans: "Montserrat", system-ui, sans-serif;
+  --font-display: "Cy Grotesk Grand", "Gilroy", system-ui, sans-serif;
+  --font-serif: "Gilroy", system-ui, sans-serif;
+  --font-sans: "Gilroy", system-ui, sans-serif;
   --font-calligraphy: "Antarctic", "Segoe Script", "Apple Chancery", cursive;
   --font-site-logo: "Antarctic", "Segoe Script", "Apple Chancery", cursive;
   --space-xs: 0.5rem;
