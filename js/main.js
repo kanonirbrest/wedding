@@ -328,6 +328,7 @@
   });
 })();
 
+/* Фоновое видео планеты — временно отключено (разметка закомментирована в index.html)
 (function () {
   var wrap = document.querySelector(".page-bg-video");
   var v = document.querySelector(".page-bg-video__video");
@@ -370,3 +371,4 @@
 
   v.addEventListener("error", showGifFallback);
 })();
+*/

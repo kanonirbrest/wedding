@@ -148,6 +148,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Фон: планета (видео) — временно отключено, разметка убрана из index.html
 .page-bg-video {
   position: fixed;
   inset: 0;
@@ -182,7 +183,6 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center 28%;
-  /* filter на <video> даёт чёрный кадр в Safari — яркость через слой ниже */
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
   -webkit-backface-visibility: hidden;
@@ -210,6 +210,7 @@ body {
 .page-bg-video--use-gif .page-bg-video__gif {
   display: block;
 }
+*/
 
 .site-hero {
   position: relative;
@@ -224,12 +225,14 @@ body {
     var(--page-gutter) clamp(5rem, 14vh, 7rem);
   overflow: hidden;
   text-align: center;
+  background-color: #000000;
 }
 
 .site-hero.anchor-section {
   scroll-margin-top: 0;
 }
 
+/* Слой под силуэт — временно отключён вместе с картинкой
 .site-hero__bg {
   position: absolute;
   inset: 0;
@@ -242,6 +245,7 @@ body {
   backface-visibility: hidden;
   pointer-events: none;
 }
+*/
 
 .site-hero__inner {
   position: relative;
@@ -336,14 +340,6 @@ body {
     background: transparent;
   }
 
-  .page-bg-video__media {
-    display: none;
-  }
-
-  .site-hero__bg {
-    background-color: #ffffff;
-  }
-
   :root {
     --page-video-light-scrim: rgba(255, 255, 255, 0.92);
   }
@@ -355,7 +351,7 @@ img {
   display: block;
 }
 
-/* Силуэт на всю высоту; multiply убирает белый фон кадра; opacity — луна и небо чуть просвечивают сквозь фигуры */
+/* Силуэт в первом блоке — временно отключён
 img.site-hero__silhouette {
   position: absolute;
   inset: 0;
@@ -370,6 +366,7 @@ img.site-hero__silhouette {
   transform: translateZ(0);
   pointer-events: none;
 }
+*/
 
 a {
   color: var(--color-ink);
