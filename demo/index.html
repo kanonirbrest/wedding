@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="demo-site">
   <head>
     <meta charset="utf-8" />
     <script>
@@ -16,60 +16,59 @@
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <title>Свадьба Александра и Екатерины</title>
-    <link rel="preload" href="images/hero-silhouette.jpg" as="image" />
-    <link rel="preload" href="videos/planet.mp4" as="video" type="video/mp4" />
+    <!-- <link rel="preload" href="../images/hero-silhouette.jpg" as="image" /> -->
     <link
       rel="preload"
-      href="fonts/antarctic/Antarctic.otf"
+      href="../fonts/antarctic/Antarctic.otf"
       as="font"
       type="font/otf"
       crossorigin
     />
     <link
       rel="preload"
-      href="fonts/cy-grotesk-grand/CyGroteskGrand-Regular.woff2"
+      href="../fonts/cy-grotesk-grand/CyGroteskGrand-Regular.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="fonts/gilroy/Gilroy-Regular.woff2"
+      href="../fonts/gilroy/Gilroy-Regular.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="fonts/gilroy/Gilroy-Medium.woff2"
+      href="../fonts/gilroy/Gilroy-Medium.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="fonts/cy-grotesk-grand/CyGroteskGrand-Medium.woff2"
+      href="../fonts/cy-grotesk-grand/CyGroteskGrand-Medium.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="fonts/cy-grotesk-grand/CyGroteskGrand-Bold.woff2"
+      href="../fonts/cy-grotesk-grand/CyGroteskGrand-Bold.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="fonts/gilroy/Gilroy-MediumItalic.woff2"
+      href="../fonts/gilroy/Gilroy-MediumItalic.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="fonts/gilroy/Gilroy-Semibold.woff2"
+      href="../fonts/gilroy/Gilroy-Semibold.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -90,34 +89,13 @@
     />
   </head>
   <body>
-    <div class="page-bg-video" aria-hidden="true">
-      <div class="page-bg-video__media">
-        <video
-          class="page-bg-video__video"
-          src="videos/planet.mp4"
-          autoplay
-          muted
-          loop
-          playsinline
-          webkit-playsinline
-          preload="auto"
-          fetchpriority="high"
-        ></video>
-        <img
-          class="page-bg-video__gif"
-          alt=""
-          width="240"
-          height="240"
-          decoding="async"
-          fetchpriority="low"
-        />
-      </div>
-    </div>
+    <!-- Фоновое видео/гиф планеты убраны с диска и из вёрстки -->
     <section class="site-hero anchor-section" id="hero" aria-label="Титульный экран">
+      <!-- Силуэт в первом блоке — временно отключён (фон блока — чёрный в CSS)
       <div class="site-hero__bg" aria-hidden="true">
         <img
           class="site-hero__silhouette"
-          src="images/hero-silhouette.jpg"
+          src="../images/hero-silhouette.jpg"
           alt=""
           width="1024"
           height="576"
@@ -125,14 +103,17 @@
           fetchpriority="high"
         />
       </div>
+      -->
       <div class="site-hero__inner">
-        <h1 class="site-hero__title">Александр и Екатерина</h1>
+        <h1 class="site-hero__title">Свадьба Александра и Екатерины</h1>
       </div>
       <p class="site-hero__meta">29 августа 2026 · Минск</p>
     </section>
     <header class="site-header" id="site-header">
       <div class="site-header__sticky-bar">
-        <p class="site-header__brand">Александр и Екатерина</p>
+        <p class="site-header__brand">
+          Приглашение на свадьбу Александра и Екатерины
+        </p>
         <div class="site-header__menu">
           <div class="site-header__inner">
             <button
@@ -348,7 +329,7 @@
               <div class="swiper-slide">
                 <figure class="dresscode-swiper__figure">
                   <img
-                    src="images/dresscode-slider/woman-1.png"
+                    src="../images/dresscode-slider/woman-1.png"
                     alt="Женский образ: чёрный пиджак, длинная юбка и золотые серьги"
                     width="682"
                     height="1024"
@@ -360,7 +341,7 @@
               <div class="swiper-slide">
                 <figure class="dresscode-swiper__figure">
                   <img
-                    src="images/dresscode-slider/man-1.png"
+                    src="../images/dresscode-slider/man-1.png"
                     alt="Мужской образ: чёрный двубортный пиджак, белые кроссовки, полный рост"
                     width="682"
                     height="1024"
@@ -372,7 +353,7 @@
               <div class="swiper-slide">
                 <figure class="dresscode-swiper__figure">
                   <img
-                    src="images/dresscode-slider/woman-2.png"
+                    src="../images/dresscode-slider/woman-2.png"
                     alt="Женский образ: короткое чёрное платье и лодочки на каблуке"
                     width="657"
                     height="1024"
@@ -384,7 +365,7 @@
               <div class="swiper-slide">
                 <figure class="dresscode-swiper__figure">
                   <img
-                    src="images/dresscode-slider/man-2.png"
+                    src="../images/dresscode-slider/man-2.png"
                     alt="Мужской образ: тёмный костюм и чёрная футболка, полный рост"
                     width="682"
                     height="1024"
@@ -396,7 +377,7 @@
               <div class="swiper-slide">
                 <figure class="dresscode-swiper__figure">
                   <img
-                    src="images/dresscode-slider/woman-3.png"
+                    src="../images/dresscode-slider/woman-3.png"
                     alt="Женский образ: чёрное платье миди с накидкой и клатч"
                     width="682"
                     height="1024"
@@ -408,7 +389,7 @@
               <div class="swiper-slide">
                 <figure class="dresscode-swiper__figure">
                   <img
-                    src="images/dresscode-slider/man-3.png"
+                    src="../images/dresscode-slider/man-3.png"
                     alt="Мужской образ: чёрная рубашка с коротким рукавом и тёмные очки"
                     width="563"
                     height="845"
@@ -420,7 +401,7 @@
               <div class="swiper-slide">
                 <figure class="dresscode-swiper__figure">
                   <img
-                    src="images/dresscode-slider/woman-4.png"
+                    src="../images/dresscode-slider/woman-4.png"
                     alt="Женский образ: чёрное мини-платье с объёмными рукавами"
                     width="682"
                     height="1024"
@@ -432,7 +413,7 @@
               <div class="swiper-slide">
                 <figure class="dresscode-swiper__figure">
                   <img
-                    src="images/dresscode-slider/man-4.png"
+                    src="../images/dresscode-slider/man-4.png"
                     alt="Мужской образ: серый костюм в полоску, свитшот и кроссовки"
                     width="682"
                     height="1024"
